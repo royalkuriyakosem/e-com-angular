@@ -1,9 +1,25 @@
-<div class="container mx-auto p-4 m-4">
-  <div class="flex flex-wrap gap-3">
-    @for( item of data; track item.id){
-    <div class="flex-3">
-      <app-cards  [data]="item"></app-cards>
+<div class="relative w-full h-96 bg-gray-900 flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 opacity-50 bg-[url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-cover bg-center"></div>
+    <div class="relative z-10 text-center text-white px-4">
+        <h1 class="text-5xl font-extrabold mb-4 tracking-tight">Summer Collection 2025</h1>
+        <p class="text-xl mb-8 font-light">Discover the latest trends in fashion and technology.</p>
+        <button (click)="filterCategory('all')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 transform hover:scale-105 shadow-lg">
+            Shop Now
+        </button>
     </div>
-    }
-  </div>
+</div>
+
+<div class="container mx-auto p-6">
+    <div class="flex flex-wrap gap-4 justify-center mb-10">
+        <button (click)="filterCategory('all')" class="px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700 dark:text-white transition">All</button>
+        @for(cat of categories; track cat.slug){
+            <button (click)="filterCategory(cat.slug)" class="px-6 py-2 rounded-full border border-gray-300 hover:bg-gray-100 dark:border-gray-600 dark:hover:bg-gray-700 dark:text-white transition capitalize">{{cat.name}}</button>
+        }
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        @for( item of data; track item.id){
+            <app-cards [data]="item"></app-cards>
+        }
+    </div>
 </div>

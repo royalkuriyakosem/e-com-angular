@@ -4,11 +4,14 @@ import { ProductComponent } from './pages/product/product.component';
 
 export const routes: Routes = [
 
-{
-    path:'',component:HomeComponent
-},
-{
-    path:'product/:id',component:ProductComponent
-}
+    {
+        path: '', component: HomeComponent
+    },
+    {
+        path: 'product/:id', component: ProductComponent
+    },
+    {
+        path: 'cart', loadComponent: () => import('./pages/cart/cart.component').then(m => m.CartComponent)
+    }
 
 ];
